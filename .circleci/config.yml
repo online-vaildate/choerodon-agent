@@ -6,7 +6,7 @@ version: 2
 jobs:
   go_test:
     <<: *default
-    working_directory: ~/repo
+    working_directory: ~/go/src/github.com/choerodon
 
     steps:
       - checkout
