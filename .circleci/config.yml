@@ -9,9 +9,6 @@ jobs:
     working_directory: ~/go/src/github.com/choerodon
 
     steps:
-      - checkout
-      - run: cp ./vendor/* ~/go/src/
-      - run: go test ./...
 
 
   docker_build:
