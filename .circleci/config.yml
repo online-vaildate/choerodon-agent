@@ -1,6 +1,6 @@
 default: &default
   docker:
-  - image: choerodon/cibase:latest
+  - image: registry.cn-hangzhou.aliyuncs.com/choerodon-tools/golang:1.9.4-alpine3.7
 
 version: 2
 jobs:
