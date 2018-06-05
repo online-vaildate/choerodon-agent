@@ -56,11 +56,3 @@ workflows:
               only:
                 - /^release-.*$/
                 - /^hotfix-.*$/
-  test:
-    jobs:
-      - go_test:
-          context: org-global
-          filters:
-            branches:
-              only:
-               - /^.*$/
