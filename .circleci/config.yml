@@ -6,15 +6,17 @@ version: 2
 jobs:
   go_test:
     <<: *default
-    working_directory: ~/repo
+    working_directory: ~/go/src/github.com/choerodon
 
     steps:
       - checkout
+      - run: go get -u github.com/golang/dep/cmd/dep
       - run: dep ensure
       - run: go test ./...
   
   docker_build:
     <<: *default
+    working_directory: ~/go/src/github.com/choerodon
     steps:
       - setup_remote_docker:
             version: 17.05.0-ce
