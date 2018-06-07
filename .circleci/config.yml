@@ -6,7 +6,7 @@ version: 2
 jobs:
   go_test:
     <<: *default
-    working_directory: ~/go/src/github.com/choerodon
+    working_directory: $GOPATH/src/github.com/choerodon
 
     steps:
       - checkout
@@ -16,7 +16,7 @@ jobs:
   
   docker_build:
     <<: *default
-    working_directory: ~/go/src/github.com/choerodon
+    working_directory: $GOPATH/src/github.com/choerodon
     steps:
       - setup_remote_docker:
             version: 17.05.0-ce
