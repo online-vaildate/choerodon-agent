@@ -1,6 +1,6 @@
 default: &default
   docker:
-  - image: golang:1.9.4-alpine3.7
+  - image: circleci/golang:1.8
 
 version: 2
 jobs:
