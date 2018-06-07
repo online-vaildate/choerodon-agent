@@ -7,7 +7,6 @@ jobs:
   go_test:
     <<: *default
     working_directory: /go/src/github.com/choerodon/choerodon-agent
-
     steps:
       - checkout
       - run: go get -u github.com/golang/dep/cmd/dep    
