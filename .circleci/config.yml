@@ -1,19 +1,19 @@
 default: &default
   docker:
-  - image: circleci/golang:1.8
+  - image: choerodon/cibase:latest
 
 version: 2
 jobs:
   go_test:
     <<: *default
-    working_directory: /go/src/github.com/choerodon/choerodon-agent
+    working_directory: ~/repo
     steps:
       - checkout
-      - run: go get -u github.com/golang/dep/cmd/dep    
+      - run: ls    
   
   docker_build:
     <<: *default
-    working_directory: /go/src/github.com/choerodon/choerodon-agent
+    working_directory: ~/repo
     steps:
       - setup_remote_docker:
             version: 17.05.0-ce
