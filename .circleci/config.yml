@@ -10,10 +10,7 @@ jobs:
 
     steps:
       - checkout
-      - run: go get -u github.com/golang/dep/cmd/dep
-      - run: dep ensure -v
-      - run: cp -r vendor/. /go/src 
-      - run: go test ./...
+      - run: go get -u github.com/golang/dep/cmd/dep    
   
   docker_build:
     <<: *default
