@@ -1,10 +1,18 @@
 default: &default
   docker:
-  - image: registry.cn-hangzhou.aliyuncs.com/choerodon-tools/golang:1.9.4-alpine3.7
+  - image: choerodon/cibase:latest
 
 version: 2
 jobs:
+  go_test:
+    <<: *default
+    working_directory: ~/repo
 
+    steps:
+      - checkout
+      - run: dep ensure
+      - run: go test ./...
+  
   docker_build:
     <<: *default
     steps:
@@ -28,11 +36,20 @@ jobs:
           yq w -i ${CHART_PATH%/*}/values.yaml image.repository ${DOCKER_GROUP_NAME}/${CIRCLE_PROJECT_REPONAME}
           yq w -i ${CHART_PATH%/*}/values.yaml image.tag ${CI_COMMIT_TAG}
           helm repo add choerodon "${CHART_REPOSITORY}/${CHART_ORGANIZATION}/${CHART_PROJECT}/"
-          helm push ${CHART_PATH%/*} --version ${CI_COMMIT_TAG} choerodon
+          helm push --username ${HELM_USER} --password ${HELM_PASSWORD} ${CHART_PATH%/*} --version ${CI_COMMIT_TAG} choerodon
 workflows:
   version: 2
   release:
     jobs:
+      - go_test:
+          context: org-global
+          filters:
+            tags:
+              only: /^.*/
+            branches:
+              only:
+                - /^release-.*$/
+                - /^hotfix-.*$/
       - docker_build:
           context: org-global
           requires:
@@ -56,11 +73,11 @@ workflows:
               only:
                 - /^release-.*$/
                 - /^hotfix-.*$/
-  test:
+  daily:
     jobs:
       - go_test:
           context: org-global
           filters:
             branches:
-              only:
+              only: 
                - /^.*$/

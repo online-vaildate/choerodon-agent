@@ -122,6 +122,36 @@
   revision = "3a771d992973f24aa725d07868b467d1ddfceafb"
 
 [[projects]]
+  name = "github.com/choerodon/choerodon-agent"
+  packages = [
+    "cmd",
+    "pkg/appclient",
+    "pkg/common",
+    "pkg/controller/configmap",
+    "pkg/controller/deployment",
+    "pkg/controller/endpoint",
+    "pkg/controller/ingress",
+    "pkg/controller/job",
+    "pkg/controller/pod",
+    "pkg/controller/replicaset",
+    "pkg/controller/secret",
+    "pkg/controller/service",
+    "pkg/controls",
+    "pkg/helm",
+    "pkg/http",
+    "pkg/kube",
+    "pkg/model",
+    "pkg/model/helm",
+    "pkg/model/kubernetes",
+    "pkg/signals",
+    "pkg/util/url",
+    "pkg/version",
+    "pkg/worker"
+  ]
+  revision = "98da4a009e58100a5b729e37d753c480a301729f"
+  version = "0.5.0"
+
+[[projects]]
   name = "github.com/davecgh/go-spew"
   packages = ["spew"]
   revision = "346938d642f2ec3594ed81d874461961cd0faa76"
@@ -1233,6 +1263,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "4f51d9da53d54d00b351abd808818d692d87fec721e7862684a8612fd75b45cc"
+  inputs-digest = "c3cb79018af778b5bf19855b02bd1df978d34d53915fb3abd0851187088db1d4"
   solver-name = "gps-cdcl"
   solver-version = 1
