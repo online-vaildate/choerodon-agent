@@ -52,7 +52,7 @@ workflows:
       - docker_build:
           context: org-global
           requires:
-          - maven_build
+          - go_test
           filters:
             tags:
               only: /^.*/
@@ -63,7 +63,6 @@ workflows:
       - helm_chart_build:
           context: org-global
           requires:
-          - maven_build
           - docker_build
           filters:
             tags:
